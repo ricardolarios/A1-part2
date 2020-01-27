@@ -93,4 +93,11 @@ class Queue : public Object
 		 * @return bool true if equal
 		 */
 		bool equals(Object* other);
+
+		/**
+		*  Shows the next item in the Queue, but does not remove it.
+		*
+		*  @return the next object in the queue
+		*/
+		Object* peek();
 };
