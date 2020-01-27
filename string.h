@@ -75,4 +75,11 @@ public:
      * @return size_t the hash code
      */
     size_t hash_me_();
+
+    /**
+     * Gets the value of this string as a char*.
+     *
+     * @return char* the value of this string
+     */
+    char* get_value();
 };

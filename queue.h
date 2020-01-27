@@ -97,7 +97,7 @@ class Queue : public Object
 		/**
 		*  Shows the next item in the Queue, but does not remove it.
 		*
-		*  @return the next object in the queue
+		*  @return Object* the next object in the queue
 		*/
 		Object* peek();
 };
