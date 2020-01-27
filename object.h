@@ -23,7 +23,7 @@ class Object
 		 * 
 		 * @return the hash code
 		 */
-		size_t hash();
+		virtual size_t hash();
 
 		/**
 		 * Computes a hash code for this object.
