@@ -16,7 +16,7 @@ class Object
 		/**
 		 * Destructor for Object.
 		 */
-		~Object();
+		virtual ~Object();
 
 		/**
 		 * Computes and stores a hash code for this object.
