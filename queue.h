@@ -22,14 +22,6 @@ class Queue : public Object
 		~Queue();
 
 		/**
-		 * Constructor for Queue. Represents a list with a given maximum
-		 * possible size.
-		 * 
-		 * @param max_size the maximum possible number of elements this queue can hold
-		 */
-		Queue(size_t max_size);
-
-		/**
 		 * Adds the given object to the queue if possible.
 		 * 
 		 * @param new_value the object to add
@@ -53,13 +45,6 @@ class Queue : public Object
 		size_t size();
 
 		/**
-		 * Returns the maximum capacity of this queue.
-		 * 
-		 * @return size_t the maximum capacity.
-		 */
-		size_t max_size();
-
-		/**
 		 * Clears this queue of all elements.
 		 * 
 		 * @return void
@@ -72,13 +57,6 @@ class Queue : public Object
 		 * @return bool true if there are no elements
 		 */
 		bool is_empty();
-
-		/**
-		 * Determines if this queue has the maximum number of possible elements.
-		 * 
-		 * @return bool true if the number of elements is the same as maximum capacity
-		 */
-		bool is_full();
 
 		/**
 		 * Computes a hash code for this queue.
