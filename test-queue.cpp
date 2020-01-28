@@ -25,24 +25,26 @@ int main()
 	assert(test_queue.is_empty());
 	assert(test_queue.equals(&test_queue_2));
 	
-	for (int i = 0; i < max_size; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Object o = Object();
 		test_queue.enqueue(&o);
 	}
 
+	assert(test_queue.size() == 10);
+
 	test_queue.clear();
 	
 	assert(test_queue.is_empty());
 
-	String s_1 = String();
-	String s_2 = String();
+	String s_1 = String("");
+	String s_2 = String("");
+
 	test_queue.enqueue(&s_1);
-
-	assert(test_queue.size() == 1);
-
+	test_queue.enqueue(&s_2);
 	test_queue.enqueue(&elem_1);
 
+	assert(test_queue.size() == 3);
 	assert(!test_queue.equals(&test_queue_2));
 
     String s_3 = String("hello");

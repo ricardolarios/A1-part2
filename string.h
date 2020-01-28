@@ -1,85 +1,50 @@
-#pragma once                                                                     
-//lang::CwC                                                                  
-#include "object.h"                                                             
+//lang::CwC
+#pragma once
+
+#include "object.h"
+#include <cstdlib>
+#include <cstring>
+#include <cstdio> 
 
 /**
- * The String class represents a collection of c++ characters.
- * @Immutable
- */
+ * An immutable String class representing a char*
+ * author: chasebish */
 class String : public Object
 {
 public:
+    /** CONSTRUCTORS & DESTRUCTORS **/
 
-    /**
-     * Default Constructor for String. Represents an empty collection of characters.
-     */
-    String() {}
-
-    /**
-     * Constructor for String. Represents the given collection of characters.
-     * 
-     * @param s the collection of characters
-     */
-    String(char* s);
-
-    /**
-     * Constructor for String. Represents the given collection of characters.
-     * 
-     * @param s the collection of characters
-     */
+    /* Creates a String copying s */
     String(const char* s);
 
-    /**
-     * Destructor for String.
-     */
+    /* Copies a String copying the value from s */
+    String(String* const s);
+
+    /* Clears String from memory */
     ~String();
 
-    /**
-     * Determines if this string is equal to the given object.
-     * 
-     * @param other the other object
-     * 
-     * @return bool true if equal
-     */
-    bool equals(Object* other);
 
-    /**
-     * Compares this string to the given one lexicographically.
-     * 
-     * @param other the other string
-     * 
-     * @return int < 0 if this string comes before other, 0 if they are equivalent,
-     *             > 0 if other comes before this string
-     */
-    int compare(String* other);
+    /** INHERITED METHODS **/
 
-    /**
-     * Concatenates the given string to the end of this string.
-     * 
-     * @param other the other string
-     * 
-     * @return String* the new string
-     */
-    String* concat(String* other);
+    /* Inherited from Object, generates a hash for a String */
+    size_t hash();
 
-    /**
-     * Returns the length of this string's character sequence (excluding '\0')
-     * 
-     * @return size_t the length of the character sequence
+    /* Inherited from Object, checks equality between an String and an Object */
+    bool equals(Object* const obj);
+
+
+    /** STRING METHODS **/
+
+    /** Compares strings based on alphabetical order
+     * < 0 -> this String is less than String s
+     * = 0 -> this String is equal to String s
+     * > 0 -> this String is greater than String s
      */
+    int cmp(String* const s);
+
+    /* Creates a new String by combining two existing Strings */
+    String* concat(String* const s);
+
+    /* Returns the current length of the String */
     size_t size();
-
-    /**
-     * Computes a hash code for this string.
-     * 
-     * @return size_t the hash code
-     */
-    size_t hash_me_();
-
-    /**
-     * Gets the value of this string as a char*.
-     *
-     * @return char* the value of this string
-     */
-    char* get_value();
 };
