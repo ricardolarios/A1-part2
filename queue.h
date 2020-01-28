@@ -58,6 +58,13 @@ class Queue : public Object
 		 */
 		bool is_empty();
 
+        /**
+		 * Computes and stores a hash code for this object.
+		 * 
+		 * @return the hash code
+		 */
+		size_t hash();
+
 		/**
 		 * Computes a hash code for this queue.
 		 * 
