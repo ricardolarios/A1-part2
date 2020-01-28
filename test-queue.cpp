@@ -13,18 +13,18 @@ int main()
 	Object elem_1 = Object();
 
 	assert(test_queue.is_empty());
-	assert(test_queue.equals(test_queue_2));
+	assert(test_queue.equals(&test_queue_2));
 
 	test_queue.enqueue(&elem_1);
 
 	assert(test_queue.size() == 1);
-	assert(!test_queue.equals(test_queue_2));
+	assert(!test_queue.equals(&test_queue_2));
 
 	Object* removed_elem = test_queue.dequeue();
 
 	assert(elem_1.equals(removed_elem));
 	assert(test_queue.is_empty());
-	assert(test_queue.equals(test_queue_2));
+	assert(test_queue.equals(&test_queue_2));
 	
 	for (int i = 0; i < max_size; i++)
 	{
@@ -44,7 +44,7 @@ int main()
 
 	test_queue.enqueue(&elem_1);
 
-	assert(!test_queue.equals(test_queue_2));
+	assert(!test_queue.equals(&test_queue_2));
 
 	return 0;
 }
