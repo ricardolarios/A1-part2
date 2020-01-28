@@ -7,7 +7,6 @@
 // main entry point for program
 int main()
 {
-	int max_size = 5;
 	Queue test_queue = Queue();
 	Queue test_queue_2 = Queue();
 	Object elem_1 = Object();
@@ -45,6 +44,17 @@ int main()
 	test_queue.enqueue(&elem_1);
 
 	assert(!test_queue.equals(&test_queue_2));
+
+    String s_3 = String("hello");
+    String s_4 = String("world");
+    Queue test_queue_3 = Queue();
+    test_queue_3.enqueue(&s_3);
+    test_queue_3.enqueue(&s_4);
+    Object* peeked_elem = test_queue_3.peek();
+    assert(s_3.equals(peeked_elem));
+    test_queue_3.dequeue();
+    peeked_elem = test_queue_3.peek();
+    assert(s_4.equals(peeked_elem));
 
 	return 0;
 }
