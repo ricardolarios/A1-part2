@@ -8,12 +8,11 @@
 int main()
 {
 	int max_size = 5;
-	Queue test_queue = Queue(max_size);
-	Queue test_queue_2 = Queue(max_size);
+	Queue test_queue = Queue();
+	Queue test_queue_2 = Queue();
 	Object elem_1 = Object();
 
 	assert(test_queue.is_empty());
-	assert(test_queue.max_size() == max_size);
 	assert(test_queue.equals(test_queue_2));
 
 	test_queue.enqueue(&elem_1);
@@ -32,8 +31,6 @@ int main()
 		Object o = Object();
 		test_queue.enqueue(&o);
 	}
-
-	assert(test_queue.is_full());
 
 	test_queue.clear();
 	
