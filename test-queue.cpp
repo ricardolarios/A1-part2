@@ -4,6 +4,69 @@
 #include "string.h"
 #include <cassert>
 
+// Testing peek functionality
+void test_enqueue_dequeue()
+{
+	Queue* test_queue = new Queue();
+	String* s1 = new String("a");
+	String* s2 = new String("b");
+	String* s3 = new String("c");
+
+	assert(test_queue->size() == 0);
+	assert(test_queue->dequeue() == NULL);
+
+	bool enqueue_success = test_queue->enqueue(s1);
+	
+	assert(enqueue_success);
+	assert(test_queue->size() == 1);
+	assert(test_queue->dequeue()->equals(s1));
+	assert(test_queue->size() == 0);
+
+	test_queue->enqueue(s3);
+	test_queue->enqueue(s2);
+	test_queue->enqueue(s1);
+
+	assert(test_queue->size() == 3);
+	assert(test_queue->dequeue()->equals(s3));
+
+	delete test_queue;
+	delete s1;
+	delete s2;
+	delete s3;
+}
+
+
+// Testing peek functionality
+void test_peek()
+{
+	Queue* test_queue = new Queue();
+	String* s1 = new String("a");
+	String* s2 = new String("b");
+	String* s3 = new String("c");
+
+	assert(test_queue->size() == 0);
+	assert(test_queue->peek() == NULL); // Peeking an empty queue should return NULL.
+
+	test_queue->enqueue(s1);
+
+	assert(test_queue->size() == 1);
+	assert(test_queue->peek()->equals(s1));
+	assert(test_queue->size() == 1); // Size should stay the same after peeking.
+
+	test_queue->enqueue(s2);
+	test_queue->enqueue(s3);
+	Object* peek_s1 = test_queue->peek();
+	Object* dequeue_s1 = test_queue->dequeue();
+
+	assert(peek_s1->equals(dequeue_s1));
+
+	delete test_queue;
+	delete s1;
+	delete s2;
+	delete s3;
+}
+
+
 // test equality of queues.
 void test_equality() {
 	Queue* test_queue = new Queue();
@@ -126,65 +189,40 @@ void test_clear() {
 	delete s5;
 }
 
+// Testing peek functionality
+void test_peek()
+{
+	Queue* test_queue = new Queue();
+	String* s1 = new String("a");
+	String* s2 = new String("b");
+	String* s3 = new String("c");
+
+	assert(test_queue->size() == 0);
+	assert(test_queue->peek() == NULL); // Peeking an empty queue should return NULL.
+
+	test_queue->enqueue(s1);
+
+	assert(test_queue->size() == 1);
+	assert(test_queue->peek()->equals(s1));
+	assert(test_queue->size() == 1); // Size should stay the same after peeking.
+
+	test_queue->enqueue(s2);
+	test_queue->enqueue(s3);
+	String* peek_s3 = test_queue->peek();
+	String* dequeue_s3 = test_queue->dequeue();
+	assert(peek_s3->equals(dequeue_s3));
+
+	delete test_queue;
+	delete s1;
+	delete s2;
+	delete s3;
+}
+
 // main entry point for program
 int main()
 {
-	Queue test_queue = Queue();
-	Queue test_queue_2 = Queue();
-	Object* elem_1 = new Object();
-
-	assert(test_queue.is_empty());
-	assert(test_queue.equals(&test_queue_2));
-
-	test_queue.enqueue(elem_1);
-
-	assert(test_queue.size() == 1);
-	assert(!test_queue.equals(&test_queue_2));
-
-	Object* removed_elem = test_queue.dequeue();
-
-	assert(elem_1->equals(removed_elem));
-	assert(test_queue.is_empty());
-	assert(test_queue.equals(&test_queue_2));
-
-	for (int i = 0; i < 10; i++)
-	{
-		Object* o = new Object();
-		test_queue.enqueue(o);
-	}
-
-	assert(test_queue.size() == 10);
-
-	test_queue.clear();
-
-	assert(test_queue.is_empty());
-
-	String* s_1 = new String("");
-	String* s_2 = new String("");
-
-	test_queue.enqueue(s_1);
-	test_queue.enqueue(s_2);
-	test_queue.enqueue(elem_1);
-
-	assert(test_queue.size() == 3);
-	assert(!test_queue.equals(&test_queue_2));
-
-	String* s_3 = new String("hello");
-	String* s_4 = new String("world");
-	Queue test_queue_3 = Queue();
-	test_queue_3.enqueue(s_3);
-	test_queue_3.enqueue(s_4);
-	Object* peeked_elem = test_queue_3.peek();
-	assert(s_3->equals(peeked_elem));
-	Object* removed_elem_2 = test_queue_3.dequeue();
-
-	// delete this since the queue no longer handles this
-	delete removed_elem_2;
-
-	peeked_elem = test_queue_3.peek();
-	assert(s_4->equals(peeked_elem));
-
-	// add specific tests
+	test_enqueue_dequeue();
+	test_peek();
 	test_clear();
 	test_queue_add_pop_twice();
 	test_equality();
