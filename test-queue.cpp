@@ -24,9 +24,6 @@ int main()
 	assert(elem_1->equals(removed_elem));
 	assert(test_queue.is_empty());
 	assert(test_queue.equals(&test_queue_2));
-
-    // delete this since the queue no longer handles this
-    delete removed_elem;
 	
 	for (int i = 0; i < 10; i++)
 	{
