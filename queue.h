@@ -23,6 +23,7 @@ class Queue : public Object
 
 		/**
 		 * Adds the given object to the queue if possible.
+         * Responsible for the memory of given object until its removal from this queue.
 		 * 
 		 * @param new_value the object to add
 		 * 
