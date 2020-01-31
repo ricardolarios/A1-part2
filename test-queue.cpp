@@ -1,4 +1,3 @@
-#pragma once
 //lang::Cpp
 #include "queue.h"
 #include "string.h"
@@ -187,35 +186,6 @@ void test_clear() {
 	delete s3;
 	delete s4;
 	delete s5;
-}
-
-// Testing peek functionality
-void test_peek()
-{
-	Queue* test_queue = new Queue();
-	String* s1 = new String("a");
-	String* s2 = new String("b");
-	String* s3 = new String("c");
-
-	assert(test_queue->size() == 0);
-	assert(test_queue->peek() == NULL); // Peeking an empty queue should return NULL.
-
-	test_queue->enqueue(s1);
-
-	assert(test_queue->size() == 1);
-	assert(test_queue->peek()->equals(s1));
-	assert(test_queue->size() == 1); // Size should stay the same after peeking.
-
-	test_queue->enqueue(s2);
-	test_queue->enqueue(s3);
-	String* peek_s3 = test_queue->peek();
-	String* dequeue_s3 = test_queue->dequeue();
-	assert(peek_s3->equals(dequeue_s3));
-
-	delete test_queue;
-	delete s1;
-	delete s2;
-	delete s3;
 }
 
 // main entry point for program
